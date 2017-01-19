@@ -9,7 +9,7 @@ app.config(["$stateProvider", function($stateProvider){
           controller: "HomeController"
         })
         .state("About", {
-          url: "/about",
+          url: "/about/:name",
           templateUrl: "pages/about.html",
           controller: "AboutController"
         })
@@ -25,8 +25,8 @@ app.controller("HomeController",["$scope",function($scope){
     $scope.content =" This is Home Page";
 }])
 
-app.controller("AboutController",["$scope",function($scope){
-    $scope.content =" This is About Page";
+app.controller("AboutController",["$scope", "$stateParams",function($scope, $stateParams){
+    $scope.content =" This is About Page with value : " + $stateParams.name;
 }])
 app.controller("ContactController",["$scope",function($scope){
     $scope.content =" This is Contact Page";
